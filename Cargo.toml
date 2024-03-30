@@ -1,0 +1,42 @@
+[package]
+name = "rgtkshell"
+version = "0.1.0"
+edition = "2021"
+build = "build.rs"
+
+[profile.release]
+# debug = true
+opt-level = 3
+codegen-units = 1
+lto = "fat"
+panic = "abort"
+strip = "symbols"
+
+[features]
+# No default features for crate foo
+default = ["hyprland"]
+# A frob feature that enables the frob feature
+# of the bar crate that you depend on
+hyprland = ["dep:hyprland"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+async-channel = "2.2.0"
+chrono = { version = "0.4.34", default-features = false, features = ["clock"] }
+gdk4-wayland = { version = "0.8.0", features = ["v4_12", "wayland_crate"] }
+gio = "0.18"
+gtk4 = { version = "0.7.0", features = ["v4_10", "v4_6", "v4_2", "v4_12"] }
+gtk4-layer-shell = "0.2.0"
+hyprland = { version = "0.3.13", default-features = false, features = ["data", "config", "ctl", "dispatch", "keyword", "listener", "tokio"], optional = true }
+tokio = { version = "1.36.0", features = ["full"] }
+tracing = "0.1.40"
+tracing-subscriber = { version = "0.3.18", features = ["env-filter"] }
+strum = { version = "0.26.1", features = ["derive"] }
+battery = "0.7.8"
+zbus = { version = "4.1.2", default-features = false, features = ["tokio"] }
+lazy_static = "1.4.0"
+
+[build-dependencies]
+grass = { version = "0.13.2", default-features = false }
+

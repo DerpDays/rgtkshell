@@ -1,0 +1,68 @@
+.bar {
+    background: rgba(0, 0, 0, 0.6);
+
+    .workspaces {
+        // background: rgba(0, 0, 0, 0.6);
+        // border-radius: 4px;
+        padding: 0px 20px;
+
+        button {
+            background: transparent;
+            border: none;
+            box-shadow: none;
+            padding: 10px 0px;
+
+            // Generic CSS for all types of workspaces.
+            box {
+                padding: 5px 10px;
+                transition: ease-in-out 0.2s;
+                border-radius: 9999px;
+            }
+
+            // applicable to workspace id's e.g: 1-10
+            &.regular box {
+                background: rgba(255, 255, 255, 0.2);
+            }
+
+            // applicable to the workspace kind of social (name:social)
+            &.social box {
+                background: rgba(88, 101, 242, 0.5);
+                border-radius: 10px;
+            }
+
+            &:hover:not(.active) box {
+                padding: 5px 12px;
+            }
+
+            &:hover.regular:not(.active) box {
+                background: rgba(255, 255, 255, 0.5);
+            }
+
+            &:hover.social:not(.active) box {
+                background: rgba(88, 101, 242, 1);
+            }
+
+            &.active box {
+                padding: 5px 15px;
+                background: rgba(255, 255, 255, 1);
+            }
+
+        }
+    }
+
+    .battery {
+        padding: 0 10px;
+        color: white;
+        font-size: 1.2rem;
+        font-family: "Droid Sans Mono";
+        font-weight: 800;
+    }
+
+    .clock {
+        padding: 0 10px;
+        color: white;
+        font-size: 1.2rem;
+        font-family: "Droid Sans Mono";
+        font-weight: 800;
+    }
+}
