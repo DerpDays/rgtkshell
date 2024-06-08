@@ -21,10 +21,13 @@ The aim of this project is to have a fully working shell (bar, desktop widgets, 
 # Usage
 1. Clone the repository `git clone https://github.com/DerpDays/rgtkshell.git`
 2. Modify (or delete) `.cargo/config.toml` since it contains build arguments specific to my system.
+   - If deleted, you can also delete `rust-toolchain.toml` and use stable rust.
 3. Edit `src/config.rs` to your liking.
 4. Run `cargo build --release`
 5. The final binary will be located at `target/release/rgtkshell`
 
 > [!NOTE]
 > If you aren't happy with the memory usage, you may try set this environment variable to force gtk4 to render using the old `cairo` backend.
+>
 > `GSK_RENDERER=cairo`
+
