@@ -28,7 +28,7 @@ lazy_static! {
 }
 
 pub(crate) fn compositor_listeners() {
-    crate::runtime().spawn(async move {
+    crate::runtime().spawn(async {
         #[cfg(feature = "hyprland")]
         crate::backends::hyprland::listen_to_events().await;
     });

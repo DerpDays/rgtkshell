@@ -28,13 +28,11 @@ fn main() {
         .with_thread_ids(true)
         .with_thread_names(true)
         .pretty();
-    // Allow passing an env variable to set the log level.
-    let filter_layer = tracing_subscriber::filter::EnvFilter::try_from_default_env()
-        .or_else(|_| tracing_subscriber::filter::EnvFilter::try_new("info"))
-        .unwrap();
 
     tracing_subscriber::registry()
-        .with(filter_layer)
+        .with(tracing_subscriber::filter::EnvFilter::from_env(
+            "RGTKSHELL_LOG",
+        ))
         .with(fmt_layer)
         .init();
 
