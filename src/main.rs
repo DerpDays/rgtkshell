@@ -64,7 +64,10 @@ fn load_css() {
     trace!("loading css");
     // Load the CSS file and add it to the provider
     let provider = CssProvider::new();
-    provider.load_from_string(include_str!("./styles/output.css"));
+    //const STYLE_PATH: &str = concat!(env!("CARGO_MANIFEST_DIR"), "/src/styles/main.scss");
+    provider.load_from_string(grass::include!("src/styles/main.scss"));
+    //provider.load_from_string(grass::include!("./styles/main.scss"));
+    //provider.load_from_string(include_str!("./styles/output.css"));
 
     // Add the provider to the default screen
     gtk4::style_context_add_provider_for_display(

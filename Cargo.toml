@@ -2,7 +2,6 @@
 name = "rgtkshell"
 version = "0.1.0"
 edition = "2021"
-build = "build.rs"
 
 [profile.release]
 # debug = true
@@ -28,7 +27,15 @@ gdk4-wayland = { version = "0.8.0", features = ["v4_12", "wayland_crate"] }
 gio = "0.18"
 gtk4 = { version = "0.7.0", features = ["v4_10", "v4_6", "v4_2", "v4_12"] }
 gtk4-layer-shell = "0.2.0"
-hyprland = { version = "0.4.0-alpha.2", default-features = false, features = ["data", "config", "ctl", "dispatch", "keyword", "listener", "tokio"], optional = true }
+hyprland = { version = "0.4.0-alpha.2", default-features = false, features = [
+  "data",
+  "config",
+  "ctl",
+  "dispatch",
+  "keyword",
+  "listener",
+  "tokio",
+], optional = true }
 tokio = { version = "1.36.0", features = ["full"] }
 tracing = "0.1.40"
 tracing-subscriber = { version = "0.3.18", features = ["env-filter"] }
@@ -36,7 +43,4 @@ strum = { version = "0.26.1", features = ["derive"] }
 battery = "0.7.8"
 zbus = { version = "4.1.2", default-features = false, features = ["tokio"] }
 lazy_static = "1.4.0"
-
-[build-dependencies]
-grass = { version = "0.13.2", default-features = false }
-
+grass = { version = "0.13.4", default-features = false, features = ["macro"] }

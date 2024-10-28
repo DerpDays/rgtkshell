@@ -5,7 +5,7 @@ use crate::events::WORKSPACE_CHANGED;
 
 pub async fn listen_to_events() {
     let mut event_listener = AsyncEventListener::new();
-    event_listener.add_workspace_change_handler(async_closure! { move |_| {
+    event_listener.add_workspace_changed_handler(async_closure! { move |_| {
         let span = span!(Level::TRACE, "workspace changed event");
         let _ = span.enter();
         trace!("recieved workspace_change event");
