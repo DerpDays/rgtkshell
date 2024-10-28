@@ -26,14 +26,17 @@
                 fenix.packages.${system}.minimal.toolchain;
 
             rgtkshell = craneLib.buildPackage rec {
-                src = craneLib.cleanCargoSource ./.;
+                src = ./.;
 
                 # Add extra inputs here or any other derivation settings
                 # doCheck = true;
-                buildInputs = [
+                nativeBuildInputs = [
                     fenix.packages.${pkgs.system}.complete.toolchain
                     pkgs.mold
+                    # pkgs.stdenv.cc.cc.lib
                     pkgs.pkg-config
+                ];
+                buildInputs = [
                     pkgs.gtk4
                     pkgs.gtk4-layer-shell
                     pkgs.pango
@@ -51,11 +54,6 @@
                     pkgs.graphene
                     pkgs.glib
                 ];
-                # nativeBuildInputs = [];
-
-                shellHook = ''
-                    export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:${builtins.toString (pkgs.lib.makeLibraryPath buildInputs)}";
-                '';
             };
         in {
             packages.default = rgtkshell;
